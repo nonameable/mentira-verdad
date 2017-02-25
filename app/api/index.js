@@ -18,5 +18,8 @@ apiRouter.get('/', function(req, res) {
 
 // set subroutes on the other files
 apiRouter.use('/tweets', require('./tweets'));
+apiRouter.use('/popular_tweets', require('./popular_tweets'));
+apiRouter.use('/logs', require('./logs'));
+
 
 module.exports = apiRouter;

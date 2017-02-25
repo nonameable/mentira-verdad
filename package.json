@@ -1,5 +1,5 @@
 {
-  "name": "twitter-bot",
+  "name": "mentira-verdad",
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
@@ -11,8 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.4",
+    "cron": "^1.2.1",
     "express": "^4.14.0",
-    "twit": "^2.2.5",
-    "mongodb": "^2.2.9"
+    "mongodb": "^2.2.9",
+    "twit": "^2.2.5"
   }
 }

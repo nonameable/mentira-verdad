@@ -17,6 +17,7 @@ In order to run you must have nodejs installed. Clone the project and run a serv
 {
 	_id: ObjectId,
 	publication_date: ISO8601,
+  text: string,
   username: string,
   profile_pic: string (valid URL),
 	upvotes: int,
