@@ -1,4 +1,4 @@
-#Cosas de paz
+# Mentira-verdad
 A web application that let people choose if what our lovely politicians say on twitter is true or false
 # Stack
 Frontend: Angular 1
@@ -25,6 +25,6 @@ In order to run you must have nodejs installed. Clone the project and run a serv
 ```
 
 
-```
 
-#Next steps
+
+# Next steps
