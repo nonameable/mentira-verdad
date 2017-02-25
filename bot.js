@@ -2,25 +2,16 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var db;
 
 //APP CONFIGURATION
 var config = require('./config');
 
-// use body parser so we can grab information from POST requests
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 // API routes
 var apiRoutes= require('./app/api');
+
 app.use('/api', apiRoutes);
-
-// ADMIN routes
-var admin = require('./app/admin/admin');
-app.use('/admin', admin);
-
 // set the public folder to serve public assets
 app.use(express.static(__dirname + '/public'));
 
