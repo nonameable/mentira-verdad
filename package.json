@@ -1,0 +1,18 @@
+{
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "nodemon bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "express": "^4.14.0",
+    "twit": "^2.2.5",
+    "mongodb": "^2.2.9"
+  }
+}
