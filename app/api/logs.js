@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 var path = require('path');
 // I need an instance of db in this file, so I can call it when I need to add something
-var server = require('../../bot');
+var server = require('../../server');
 var db;
 
 // middleware that is specific to this router
