@@ -57,7 +57,7 @@ var job = new CronJob('00 30 11 * * 1-7', function() {
 	 tweet_extractor.getTweetsFromTwitter();
 	 // there may be some sync problems here
 	 var tweets_to_post = tweet_extractor.allTweets;
-	 // saves tweets (max 30)
+	 // saves tweets (max 30) Here tweets to post must have the form I want
 	 db.collection('tweets').insertMany(
 		 tweets_to_post,
 		 function(err, result){
