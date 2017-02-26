@@ -52,7 +52,7 @@ function cleanTweets(){
 
 // adds the tweets from a particular user
 function addPopularTweetsFromUser(user, callback){
-	T.get('search/tweets', { q: 'from:' + user, count: 2, result_type: 'popular' }, function(err, data, response) {
+	T.get('search/tweets', { q: 'from:' + user, count: 1, result_type: 'popular' }, function(err, data, response) {
 	  var tweetsData = data.statuses;
 	  console.log("the number of tweets from user " + user + " is " + tweetsData.length);
 	  for (var i = 0; i < tweetsData.length; i++) {
@@ -72,5 +72,5 @@ function printAllTweets(){
 	}
 }
 
-
+module.exports.getTweetsFromTwitter;
 module.exports.allTweets;

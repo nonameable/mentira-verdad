@@ -36,7 +36,7 @@ MongoClient.connect(config.database, (err, database) => {
 });
 
 // we declare the tweet extractor taht will get the most popular tweets
-//var tweet_extractor = require('./app/twitter/tweet_extractor');
+var tweet_extractor = require('./app/twitter/tweet_extractor');
 
 
 // Cron job that executes the update every day
@@ -48,20 +48,35 @@ var job = new CronJob('00 30 11 * * 1-7', function() {
    */
 
 	 // gets more popular one
+
 	 // saves it to the popular_tweets collection
+
 	 // clears tweets collection
 	 db.collection('tweets').deleteMany({});
 	 // gets tweets  (max 30)
-
-
+	 tweet_extractor.getTweetsFromTwitter();
+	 // there may be some sync problems here
+	 var tweets_to_post = tweet_extractor.allTweets;
 	 // saves tweets (max 30)
-
-
+	 db.collection('tweets').insertMany(
+		 tweets_to_post,
+		 function(err, result){
+			 assert.equal(null, err);
+			 assert.equal(tweets_to_post.length(), result.insertedCount);
+		 }
+	 );
 
   }, function () {
     /* This function is executed when the job stops */
 		console.log("Tweets updated");
 		//saves log into database
+		db.collection('update_logs').insert(
+			{date: new Date()},
+			function (err, result){
+				assert.equal(null, err);
+ 			 assert.equal(1, result.insertedCount);
+			}
+		);
 
   },
   true, /* Start the job right now */

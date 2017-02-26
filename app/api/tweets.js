@@ -29,15 +29,45 @@ router.post('/vote',  function(req, res){
   var vote = req.body;
   if (vote.class === 'upvote'){
     // increase upvote counter in database for that tweet
+    db.collection('tweets').update(
+      {_id: vote._id },
+      {$inc: { upvotes: 1 }},
+      function(err, result) {
+        if(err) res.send('Error saving upvote');
+        res.send('upvote saved!');
+      }
+    )
   }
-  else  if (vote.class === 'downvote'){
+  else if (vote.class === 'downvote'){
     // increase downvote counter in database for that tweet
+    db.collection('tweets').update(
+      {_id: vote._id },
+      {$inc: { downvotes: 1 }},
+      function(err, result){
+        if(err) res.send('Error saving downvote');
+        res.send('downvote saved!');
+      }
+    )
   }
   else {
     // leave else clause in case we want to extend classes of votes
   }
 });
 
-
+function getMorePopularTweet(){
+  db.collection('tweets').find().toArray(function(err, result){
+  if(err) return 'Error in database'
+  var more_popular_tweet = result[0];
+  var popularityBar = more_popular_tweet.upvotes + more_popular_tweet.downvotes;
+  for (var i = 1; i < result.length; i++) {
+    if((result[i].upvotes + result[i].downvotes) > popularityBar){
+      more_popular_tweet = result[i];
+      popularityBar = result[i].upvotes + result[i].downvotes;
+    }
+  }
+  return more_popular_tweet;
+  });
+}
 
  module.exports = router;
+ module.exports = getMorePopularTweet;
