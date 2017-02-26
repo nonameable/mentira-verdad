@@ -21,5 +21,3 @@ module.exports  = {
   	IvanCepedaCast: 'ICC',
   	ernestomaciast: 'EMT'
 }
-
-mluciaramirez: Mientras que a Farc e incondicionales de gobierno y sus familias les aumentan o mantienen esquemas de seguridad a l… https://t.co/iYmdY9MfS5'
